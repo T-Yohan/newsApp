@@ -45,7 +45,8 @@ Route::middleware('auth')->group(function () {
 //route sécuriséé pour la gestion des news
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('admin/news/add',[AdminNewsController::class,'add'] )->name('news.add');
+    Route::get('admin/news/add',[AdminNewsController::class,'formAdd'] )->name('news.add');
+    Route::post('admin/news/add',[AdminNewsController::class,'add'] )->name('news.add');
 });
 
 require __DIR__.'/auth.php';
