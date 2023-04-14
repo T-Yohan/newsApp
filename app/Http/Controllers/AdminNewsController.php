@@ -25,7 +25,11 @@ class AdminNewsController extends Controller
             $fileName = $request->image->store('images');//renommer le fichier de destination
             $newsModel->image = $fileName ;
         }
+        $newsModel->description = $request->description;
+
         $newsModel->titre = $request->titre;
         $newsModel->save(); //enregistrement
+        return redirect(route('news.add'));
     }
+
 }

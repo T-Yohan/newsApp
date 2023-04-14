@@ -46,15 +46,9 @@
             class="mb-3 block text-base font-medium text-white-700">
                 Description
             </label>
-            <input
-            type="text"
-            name="description"
+            <textarea name="description"
             placeholder="Ajoutez une description"
-            class="w-full rounded-md border border-violet bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-violet" />
-
-            @error('description')
-                Ajoutez une description
-            @enderror
+            class= "w-full resize-none rounded-md border border-violet bg-white text-base font-medium text-black outline-none focus:border-violet cols="30" rows="10"></textarea>
 
         </div>
         <div class="mb-5">
