@@ -17,8 +17,14 @@
                     </x-nav-link>
 
                     <x-nav-link :href="route('news.add')" :active="request()->routeIs('news.add')">
+                        {{ __('Ajouter') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('news.liste')" :active="request()->routeIs('news.liste')">
                         {{ __('News') }}
                     </x-nav-link>
+
+
                 </div>
             </div>
 

@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('admin/news/add',[AdminNewsController::class,'formAdd'] )->name('news.add');
     Route::post('admin/news/add',[AdminNewsController::class,'add'] )->name('news.add');
+    Route::get('admin/news/liste',[AdminNewsController::class,'index'] )->name('news.liste');
 });
 
 require __DIR__.'/auth.php';

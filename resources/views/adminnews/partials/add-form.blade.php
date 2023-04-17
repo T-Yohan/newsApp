@@ -17,7 +17,7 @@
 
     </div>
         <div class="mb-5">
-            <button class="bg-violet-600 px-8 py-3 text-white rounded-md font-weight-600">Ajouter</button>
+
         </div>
 
         <div class="mb-5">
@@ -38,7 +38,6 @@
         </div>
 
         <div class="mb-5">
-            <button class="bg-violet-600 px-8 py-3 text-white rounded-md font-weight-600">Ajouter</button>
         </div>
 
         <div class="mb-5">
@@ -46,15 +45,16 @@
             class="mb-3 block text-base font-medium text-white-700">
                 Description
             </label>
-            <textarea name="description"
+            <textarea
+            rows="4"
+            name="description"
             placeholder="Ajoutez une description"
             class= "w-full resize-none rounded-md border border-violet bg-white text-base font-medium text-black outline-none focus:border-violet cols="30" rows="10"></textarea>
 
         </div>
         <div class="mb-5">
-            <button class="bg-violet-600 px-8 py-3 text-white rounded-md font-weight-600">Envoyer</button>
         </div>
-
+        <button class="bg-violet-600 px-8 py-3 text-white rounded-md font-weight-600">Ajouter</button>
 
 
 
