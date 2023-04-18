@@ -1,4 +1,6 @@
-<form action="{{ Route('news.add') }}"method='post' enctype="multipart/form-data">  <!--obligatoire pour envoyer des fichiers-->
+
+
+<form action="{{ !empty($actu)?route('news.edit' , $actu->id):route('news.add') }}"method='post' enctype="multipart/form-data">  <!--obligatoire pour envoyer des fichiers-->
     @csrf
     <div class="mb-5">
         <label for="titre"
@@ -8,6 +10,7 @@
         <input
         type="text"
         name="titre"
+        value="{{!empty($actu)?$actu->titre:''}}"
         placeholder="saisissez votre titre"
         class="w-full rounded-md border border-violet bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-violet" />
 
@@ -49,12 +52,14 @@
             rows="4"
             name="description"
             placeholder="Ajoutez une description"
-            class= "w-full resize-none rounded-md border border-violet bg-white text-base font-medium text-black outline-none focus:border-violet cols="30" rows="10"></textarea>
+            class= "w-full resize-none rounded-md border border-violet bg-white text-base font-medium text-black outline-none focus:border-violet cols="30" rows="10">
+            {{!empty($actu)?$actu->description:''}}
+        </textarea>
 
         </div>
         <div class="mb-5">
         </div>
-        <button class="bg-violet-600 px-8 py-3 text-white rounded-md font-weight-600">Ajouter</button>
+        <button class="bg-violet-600 px-8 py-3 text-white rounded-md font-weight-600">{{!empty($actu)?'Modifier':'Ajouter'}}</button>
 
 
 

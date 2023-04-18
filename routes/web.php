@@ -44,10 +44,18 @@ Route::middleware('auth')->group(function () {
 
 //route sécuriséé pour la gestion des news
 
+//route pour ajouter
 Route::middleware(['auth'])->group(function () {
     Route::get('admin/news/add',[AdminNewsController::class,'formAdd'] )->name('news.add');
     Route::post('admin/news/add',[AdminNewsController::class,'add'] )->name('news.add');
+
+//route pour modifier
+    Route::get('admin/news/edit/{id}',[AdminNewsController::class,'formEdit'] )->name('news.edit');
+    Route::post('admin/news/edit/{id}',[AdminNewsController::class,'edit'] )->name('news.edit');
+
+//route pour lister et supprimer
     Route::get('admin/news/liste',[AdminNewsController::class,'index'] )->name('news.liste');
+    Route::get('admin/news/delete/{id}',[AdminNewsController::class,'delete'] )->name('news.delete');
 });
 
 require __DIR__.'/auth.php';
