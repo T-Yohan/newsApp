@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminNewsController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\NewsStandardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,15 +21,11 @@ Route::get('/', function () {
 });
 
 //route sécurisé via le middlware ('auth')
-Route::get('/secure', function () {
-    return view('secure');
-})->middleware(['auth']);
 
 
-
-Route::get('/notsecure', function () {
-    return view('notsecure');
-});
+Route::get('/news',[NewsController::class,'index']);
+Route::get('/newsstandard',[NewsStandardController::class,'index'])->name('news.standard');
+Route::get('/newsstandard/{actu}',[NewsStandardController::class,'detail'])->name('news.standard.detail');
 
 
 Route::get('/dashboard', function () {

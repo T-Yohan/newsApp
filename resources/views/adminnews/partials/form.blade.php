@@ -28,6 +28,12 @@
             class="mb-3 block text-base font-medium text-white-700">
                 Image
             </label>
+            @isset($actu)
+            <img class="h-20 w-20  object-cover object-center p-2"
+            src="{{Storage::url($actu->image)}}"alt=""
+            />
+            @endisset
+
             <input
             type="file"
             name="image"

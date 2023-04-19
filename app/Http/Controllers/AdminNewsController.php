@@ -37,6 +37,21 @@ class AdminNewsController extends Controller
             $fileName = $request->image->store('public/images');//renommer le fichier de destination
             $newsModel->image = $fileName ;
         }
+
+        if ($request->file()) {
+
+            if($actu->image !='' ){
+                Storage::delete($actu->image);
+            };
+
+            $fileName = $request->image->store('public/images');//renommer le fichier de destination
+            $newsModel->image = $fileName ;
+        }
+
+
+
+
+
         $newsModel->description = $request->description;
 
         $newsModel->titre = $request->titre;
