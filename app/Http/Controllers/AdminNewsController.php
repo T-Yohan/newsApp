@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,12 +22,15 @@ class AdminNewsController extends Controller
 
     public function formAdd()
     { //affichage de mon formulaire
+        $categories = Category::orderBy('name','asc')->get();
         return view('adminnews.edit');
+
     }
 
     public function add(Request $request){
      //ajouter des informations
         $newsModel = new News;  //création d'une instance de classe (model News) pour enregister en base
+
         //vérification des données du formulaire
         /***titre obligatoire
          *
@@ -40,8 +44,8 @@ class AdminNewsController extends Controller
 
         if ($request->file()) {
 
-            if($actu->image !='' ){
-                Storage::delete($actu->image);
+            if($newsModel->image !='' ){
+                Storage::delete($newsModel->image);
             };
 
             $fileName = $request->image->store('public/images');//renommer le fichier de destination
@@ -50,8 +54,7 @@ class AdminNewsController extends Controller
 
 
 
-
-
+        $newsModel->category_id = $request->category;
         $newsModel->description = $request->description;
 
         $newsModel->titre = $request->titre;
@@ -62,13 +65,15 @@ class AdminNewsController extends Controller
     public function formEdit($id=0)
     { //affichage de mon formulaire
         $actu = News::findOrFail($id);
-        return view('adminnews.edit' ,compact('actu'));
+        $categories = Category::orderBy('name','asc')->get();
+        return view('adminnews.edit' ,compact('actu','categories'));
     }
 
     public function edit(Request $request , $id=0){
         $actu = News::findOrFail($id); //model News a modifier a partir de l'id
 
         $request->validate(['titre'=>"required|min:5"]);
+        $actu->category_id = $request->category; //reçois l'id selectionné dans le champ select
         $actu->description = $request->description;
         $actu->titre = $request->titre;
         $actu->save(); //enregistrement
