@@ -23,7 +23,7 @@ class AdminNewsController extends Controller
     public function formAdd()
     { //affichage de mon formulaire
         $categories = Category::orderBy('name','asc')->get();
-        return view('adminnews.edit');
+        return view('adminnews.edit', compact('categories'));
 
     }
 
