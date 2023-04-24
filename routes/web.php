@@ -45,7 +45,10 @@ Route::middleware('auth')->group(function () {
 //route sécuriséé pour la gestion des news
 
 //route pour ajouter
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','can:admin'])->group(function () {  //can:admin pour vérifier pour tout les cas
+
+    //->can('admin') pour vérifier pour un cas
+
     Route::get('admin/news/add',[AdminNewsController::class,'formAdd'] )->name('news.add');
     Route::post('admin/news/add',[AdminNewsController::class,'add'] )->name('news.add');
 

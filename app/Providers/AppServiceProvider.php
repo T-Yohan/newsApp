@@ -24,8 +24,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        Gate::define('admin', function (User $user) {  //nom de l'autorisation de la facade Gate
-            return $user->admin === 1;  //admin est le nom de l'autorisation pour la façade Gate
-        });
+
     }
 }

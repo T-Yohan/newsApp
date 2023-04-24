@@ -3,18 +3,17 @@
     <ul>
         @foreach ($categories as $itemCategory)
             <li>
-                <a href="{{ route('news.standard.category', $itemCategory->id) }}">
+                <a href="{{ route('news.standard.category', $itemCategory->id) }}" class="text-white">
                     {{ $itemCategory->name }}
                 </a>
             </li>
         @endforeach
-
     </ul>
 
     @if (Gate::allows('admin'))
-        <h1 class="text-white" m-2>ok</h1>
+        <h1 class="text-white" m-2>Admin</h1>
     @else
-        <h1 class="text-white" m-2>not ok</h1>
+        <h1 class="text-white" m-2>not Admin</h1>
     @endif
 
     <h1 class="text-white" m-2>Liste des news</h1>
